@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LEO — Antonio Leopoldo Meira. Ensaios, teatro, filosofia, psicanálise, neurociência, economia e projetos interdisciplinares.">
+<meta name="theme-color" content="#0b0c0e">
+<title>LEO — Antonio Leopoldo Meira</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#0b0c0e; --bg2:#111318; --panel:#151820; --ink:#f3efe7;
+  --muted:#a9a39a; --line:#2b2e36; --gold:#d8b36a; --blue:#88a9c7;
+  --rose:#b9868e; --max:1240px; --r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink); background:
+  radial-gradient(900px 600px at 82% -10%,rgba(136,169,199,.12),transparent 55%),
+  radial-gradient(700px 500px at 12% 22%,rgba(216,179,106,.08),transparent 60%),
+  var(--bg);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.75;
+}
+a{color:inherit}
+nav{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:17px max(24px,calc((100vw - var(--max))/2));background:rgba(11,12,14,.78);
+  backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)
+}
+.brand{font-weight:800;letter-spacing:.22em;font-size:.82rem;text-decoration:none}
+.navlinks{display:flex;gap:24px}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem}
+.navlinks a:hover{color:var(--ink)}
+.hero{max-width:var(--max);margin:auto;min-height:82vh;padding:11vh 24px 7vh;display:grid;align-items:center}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.22em;font-size:.75rem}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500}
+h1{font-size:clamp(3.8rem,9vw,8.6rem);line-height:.86;margin:.16em 0 .2em;letter-spacing:-.05em}
+.hero-copy{max-width:780px;color:#d0cbc3;font-size:clamp(1.05rem,2vw,1.28rem)}
+.constellation{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+.pill{border:1px solid var(--line);border-radius:99px;padding:8px 13px;color:#c9c3ba;background:rgba(255,255,255,.02);font-size:.82rem}
+section{max-width:var(--max);margin:auto;padding:92px 24px;border-top:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}
+h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1;margin:0}
+.lead{color:var(--muted);max-width:650px}
+.quote{border-left:2px solid var(--gold);padding-left:20px;color:#cbc5bd;font-family:Georgia,serif;font-size:1.18rem}
+.longform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.longform article{background:linear-gradient(150deg,rgba(255,255,255,.035),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--r);padding:30px}
+.longform h3{font-size:1.75rem;margin:.1em 0 .5em}
+.longform p{color:#c7c1b9;margin:.75em 0}
+.ref{color:var(--blue);font-size:.9rem}
+.projects,.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{
+  position:relative;display:flex;flex-direction:column;min-height:330px;padding:25px;border:1px solid var(--line);
+  border-radius:var(--r);background:linear-gradient(155deg,#171a21,#101217);overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease
+}
+.card:before{content:"";position:absolute;inset:-60% auto auto -20%;width:210px;height:210px;border-radius:50%;
+  background:radial-gradient(circle,rgba(216,179,106,.11),transparent 70%);animation:pulse 7s ease-in-out infinite}
+.card:hover{transform:translateY(-5px);border-color:#4b4f5a;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+@keyframes pulse{0%,100%{transform:scale(.85);opacity:.4}50%{transform:scale(1.2);opacity:.8}}
+.tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold)}
+.card h3{font-size:1.65rem;line-height:1.12;margin:.55em 0 .5em}
+.card p{color:var(--muted);margin:0 0 22px}
+.actions{margin-top:auto;display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;padding:10px 13px;border-radius:10px;
+ border:1px solid #3a3e48;background:#191c24;color:#f2eee6;font-size:.85rem}
+.btn:hover{background:#222630}
+.btn.primary{border-color:#8b7446;background:#2a2419}
+.note{font-size:.77rem;color:#807b74;margin-top:12px}
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+.contact-box{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:#121419}
+.email{font-family:Georgia,serif;font-size:clamp(1.45rem,3vw,2.4rem);word-break:break-word;text-decoration:none;color:var(--gold)}
+footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;border-top:1px solid var(--line);font-size:.82rem}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.fade.in{opacity:1;transform:none}
+@media(max-width:900px){
+  .section-head,.contact{grid-template-columns:1fr}.projects,.works{grid-template-columns:1fr 1fr}.longform{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  nav{padding:15px 18px}.navlinks{display:none}.hero{padding-left:18px;padding-right:18px}
+  section{padding:70px 18px}.projects,.works{grid-template-columns:1fr}.card{min-height:auto}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="#inicio">LEO / 2026</a>
+  <div class="navlinks">
+    <a href="#campos">Campos</a><a href="#projetos">Projetos</a><a href="#trabalhos">Trabalhos</a><a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div>
+    <div class="eyebrow">Antonio Leopoldo Meira</div>
+    <h1>Não uma linha reta.<br>Uma constelação.</h1>
+    <p class="hero-copy">Economia, teatro, filosofia, psicanálise, neurociência, história, inteligência artificial e cinema como campos que se atravessam. Este site reúne ensaios, estudos, projetos editoriais, dramaturgia e investigações pessoais em permanente elaboração.</p>
+    <div class="constellation">
+      <span class="pill">Psicanálise</span><span class="pill">Filosofia</span><span class="pill">Teatro</span>
+      <span class="pill">Economia</span><span class="pill">Neurociência</span><span class="pill">História</span>
+      <span class="pill">Inteligência Artificial</span><span class="pill">Cinema</span>
+    </div>
+  </div>
+</header>
+
+<section id="campos" class="fade">
+  <div class="section-head">
+    <div><div class="eyebrow">01 — Campos de interesse</div><h2>Uma constelação de problemas.</h2></div>
+    <p class="lead">Os campos não aparecem como compartimentos. Cada um oferece uma linguagem diferente para uma mesma pergunta: como o ser humano se constitui, deseja, sofre, cria, troca, representa e transforma o mundo?</p>
+  </div>
+  <div class="longform">
+    <article>
+      <h3>Psicanálise & Filosofia</h3>
+      <p>A psicanálise interessa aqui menos como repertório de definições do que como investigação daquilo que escapa à consciência. Freud desloca o sujeito de sua pretensão de transparência; Lacan radicaliza esse deslocamento ao situá-lo na linguagem, no desejo e na falta.</p>
+      <p>A filosofia entra no mesmo campo como exercício de problematização: Platão pensa o eros como movimento da falta; Spinoza pergunta pela potência dos afetos; Nietzsche interroga os valores que estruturam nossas interpretações; Butler mostra a dependência constitutiva do sujeito em relação ao outro.</p>
+      <p>O ponto de encontro é o problema do sujeito: não uma unidade acabada, mas uma formação histórica, simbólica, corporal e relacional. A leitura filosófica impede que a psicanálise se feche num vocabulário clínico; a psicanálise impede que a filosofia esqueça o inconsciente, a fantasia e o conflito.</p>
+      <p>O interesse, portanto, está nos conceitos que atravessam épocas: desejo, identificação, angústia, amor, falta, reconhecimento, alteridade e laço social.</p>
+      <p class="ref">Diálogos de referência: Freud, Lacan, Platão, Spinoza, Nietzsche, Butler, Ricoeur.</p>
+    </article>
+    <article>
+      <h3>Teatro & Dramaturgia</h3>
+      <p>O teatro transforma conceitos em corpo, tempo, presença e risco. Aquilo que na filosofia aparece como problema e na psicanálise como estrutura pode, em cena, tornar-se gesto, pausa, voz, conflito e relação.</p>
+      <p>A formação do ator oferece um laboratório singular da subjetividade. Stanislavski, Meisner e a análise ativa não tratam a emoção como decoração, mas como consequência de ações, objetivos, circunstâncias e relações concretas.</p>
+      <p>A dramaturgia interessa também como forma de pensamento. Heiner Müller, Shakespeare e a escrita contemporânea mostram que uma peça pode argumentar sem se tornar tratado: o conflito encena ideias e obriga o espectador a habitar posições incompatíveis.</p>
+      <p>Os projetos teatrais reunidos aqui procuram cruzar corpo, ciência, desejo e linguagem, sem abandonar a autonomia estética da cena.</p>
+      <p class="ref">Diálogos de referência: Stanislavski, Meisner, Shakespeare, Heiner Müller, Anne Bogart.</p>
+    </article>
+    <article>
+      <h3>Neurociência, Saúde & Medicina 3.0</h3>
+      <p>A neurociência abre uma escala distinta de observação: plasticidade, memória, percepção, sono, envelhecimento e regulação metabólica. O desafio é integrar evidências biológicas sem reduzir a experiência humana ao cérebro.</p>
+      <p>O interesse por Medicina 3.0 desloca a clínica do tratamento tardio para a prevenção, o acompanhamento longitudinal e a interpretação de trajetórias biométricas. Dados só ganham valor quando inseridos em contexto e relacionados a decisões concretas.</p>
+      <p>Projetos de monitoramento metabólico e biomecânico aparecem neste site como estudos pessoais e educacionais. Não substituem avaliação médica; funcionam como interfaces para organizar informação, perguntas e acompanhamento.</p>
+      <p>A questão central é metodológica: como combinar medição, evidência científica, experiência subjetiva e prudência clínica sem transformar saúde em fetiche de números?</p>
+      <p class="ref">Diálogos de referência: literatura biomédica contemporânea, prevenção, neuroplasticidade e ciência do envelhecimento.</p>
+    </article>
+    <article>
+      <h3>Economia, História & Inteligência Artificial</h3>
+      <p>A formação econômica introduz uma atenção permanente a incentivos, instituições, escassez, poder e escolha coletiva. Nenhuma subjetividade existe fora de estruturas materiais; nenhum sistema econômico existe sem pressupostos sobre comportamento humano.</p>
+      <p>A história impede que o presente pareça natural. Instituições, categorias e valores são resultados de processos. Ler historicamente é descobrir que aquilo que parece inevitável foi construído — e pode ser transformado.</p>
+      <p>A inteligência artificial acrescenta um problema novo: sistemas capazes de participar da produção intelectual, da escrita, da análise e da criação. O interesse não é celebrar a técnica, mas investigar o que muda quando a cognição passa a ser distribuída entre humanos e modelos.</p>
+      <p>Nesse encontro, economia, história e IA tornam-se instrumentos para pensar transformação social, trabalho intelectual, autoria e novos regimes de conhecimento.</p>
+      <p class="ref">Diálogos de referência: economia institucional, história intelectual, filosofia da técnica e estudos críticos de IA.</p>
+    </article>
+  </div>
+</section>
+
+<section id="projetos" class="fade">
+  <div class="section-head">
+    <div><div class="eyebrow">02 — Projetos</div><h2>Projetos em movimento.</h2></div>
+    <p class="lead">Cada projeto abaixo traz uma síntese e indica onde se encontra o trabalho disponível nesta edição do site.</p>
+  </div>
+  <div class="projects">
+    <article class="card">
+      <span class="tag">Coleção editorial</span>
+      <h3>Psicanálise Explicada — Freud e Lacan para Todos</h3>
+      <p>Projeto de ensino por conceitos, organizado para conduzir o leitor da experiência cotidiana à formulação rigorosa. A Parte II explicita o método pedagógico e editorial da coleção.</p>
+      <div class="actions"><a class="btn primary" href="02_Parte_II_O_Metodo.docx">Parte II — O Método</a></div>
+      <div class="note">Arquivo disponível: DOCX.</div>
+    </article>
+    <article class="card">
+      <span class="tag">Dramaturgia</span>
+      <h3>O Limão e o Corpo</h3>
+      <p>Peça teatral em três atos que atravessa fisiologia, metabolismo, linguagem e condição humana, transformando processos corporais em personagens e conflito dramático.</p>
+      <div class="actions"><a class="btn primary" href="O_LIMAO_E_O_CORPO_Edicao_30_paginas.html">Ler obra completa</a></div>
+      <div class="note">Arquivo disponível: HTML integral.</div>
+    </article>
+    <article class="card">
+      <span class="tag">Literatura</span>
+      <h3>Entre Silêncios e Retornos</h3>
+      <p>Narrativa sobre cuidado, distância, pertencimento e continuidade. O projeto cruza memória, vínculo e a experiência do tempo em forma literária.</p>
+      <div class="actions"><a class="btn primary" href="Entre_Silencios_e_Retornos_Versao_Definitiva_3_0.html">Ler versão integral</a></div>
+      <div class="note">Arquivo disponível: HTML.</div>
+    </article>
+  </div>
+</section>
+
+<section id="trabalhos" class="fade">
+  <div class="section-head">
+    <div><div class="eyebrow">03 — Trabalhos</div><h2>Ensaios, estudos e interfaces.</h2></div>
+    <p class="lead">Os cartões abaixo têm links diretos para os arquivos existentes no pacote. Não há botões cenográficos: cada acesso aponta para um trabalho real.</p>
+  </div>
+  <div class="works">
+    <article class="card">
+      <span class="tag">Psicanálise</span><h3>Do Traço ao Objeto</h3>
+      <p>Paper sobre identificação, desejo do Outro, traço unário, objeto a e angústia na constituição do sujeito.</p>
+      <div class="actions"><a class="btn primary" href="Paper_Do_Traco_ao_Objeto_Antonio_Leopoldo_Meira.pdf">Abrir PDF completo</a></div>
+    </article>
+    <article class="card">
+      <span class="tag">Psicanálise & sociedade</span><h3>Psicologia das Massas e Processos de Identificação</h3>
+      <p>Ensaio sobre laço social, idealização, liderança, identificação, desejo mimético e massas contemporâneas.</p>
+      <div class="actions"><a class="btn primary" href="Psicologia_das_Massas_e_Processos_de_Identificacao.docx">Abrir ensaio</a></div>
+    </article>
+    <article class="card">
+      <span class="tag">Clínica & biomecânica</span><h3>Relatório clínico espinal</h3>
+      <p>Interface visual educacional para organizar achados da coluna lombar, estratificação e roteiro de discussão fisioterapêutica.</p>
+      <div class="actions"><a class="btn primary" href="leo_coluna_site.html">Abrir relatório</a></div>
+      <div class="note">Conteúdo educacional; não substitui avaliação profissional.</div>
+    </article>
+    <article class="card">
+      <span class="tag">Psicanálise visual</span><h3>Topografia do Psiquismo</h3>
+      <p>Experiência visual para organizar relações entre instâncias, registros e conceitos psicanalíticos.</p>
+      <div class="actions"><a class="btn primary" href="Topografia_do_Psiquismo.html">Abrir experiência</a></div>
+    </article>
+    <article class="card">
+      <span class="tag">Filosofia contemporânea</span><h3>Judith Butler — Os sentidos do sujeito</h3>
+      <p>Série de ensaios interdisciplinares sobre formação do sujeito, linguagem, corpo, alteridade e reconhecimento.</p>
+      <div class="actions"><a class="btn primary" href="Butler_OsSentidosdoSujeito_FINAL.pdf">Abrir PDF completo</a></div>
+    </article>
+    <article class="card">
+      <span class="tag">Coleção editorial</span><h3>Psicanálise Explicada — Parte II: O Método</h3>
+      <p>Capítulos sobre ensino por conceitos, arquitetura didática, passagem da experiência ao conceito e fidelidade teórica.</p>
+      <div class="actions"><a class="btn primary" href="02_Parte_II_O_Metodo.docx">Abrir Parte II</a></div>
+    </article>
+  </div>
+</section>
+
+<section id="contato" class="fade">
+  <div class="contact">
+    <div>
+      <div class="eyebrow">04 — Contato</div>
+      <h2>Correspondência, projetos, ideias.</h2>
+      <p class="lead">Para comentários sobre ensaios, teatro, psicanálise, filosofia, IA e projetos interdisciplinares.</p>
+    </div>
+    <div class="contact-box">
+      <div class="tag">E-mail</div>
+      <p><a class="email" href="mailto:contato@leopoldomeira.com.br">contato@leopoldomeira.com.br</a></p>
+      <p class="note">Domínio de publicação: leopoldomeira.com.br</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Antonio Leopoldo Meira — LEO. Site pessoal, ensaístico e experimental.</div>
+  <div>Textos e projetos apresentados como produção intelectual e educacional. Conteúdo clínico não constitui prescrição médica.</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
