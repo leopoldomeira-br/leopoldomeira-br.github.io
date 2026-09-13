@@ -39,7 +39,7 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500}
 h1{font-size:clamp(3.8rem,9vw,8.6rem);line-height:.86;margin:.16em 0 .2em;letter-spacing:-.05em}
 .hero-copy{max-width:780px;color:#d0cbc3;font-size:clamp(1.05rem,2vw,1.28rem)}
 .constellation{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
-.pill{border:1px solid var(--line);border-radius:99px;padding:8px 13px;color:#c9c3ba;background:rgba(255,255,255,.02);font-size:.82rem}
+.pill{border:1px solid var(--line);border-radius:99px;padding:8px 13px;color:#c9c3ba;background:rgba(255,255,255,.02);font-size:.82rem}a.pill{text-decoration:none;transition:background .2s,border-color .2s,color .2s}a.pill:hover{background:rgba(216,179,106,.12);border-color:var(--gold);color:var(--ink)}
 section{max-width:var(--max);margin:auto;padding:92px 24px;border-top:1px solid var(--line)}
 .section-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}
 h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1;margin:0}
@@ -98,9 +98,9 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
     <h1>Não uma linha reta.<br>Uma constelação.</h1>
     <p class="hero-copy">Economia, teatro, filosofia, psicanálise, neurociência, história, inteligência artificial e cinema como campos que se atravessam. Este site reúne ensaios, estudos, projetos editoriais, dramaturgia e investigações pessoais em permanente elaboração.</p>
     <div class="constellation">
-      <span class="pill">Psicanálise</span><span class="pill">Filosofia</span><span class="pill">Teatro</span>
-      <span class="pill">Economia</span><span class="pill">Neurociência</span><span class="pill">História</span>
-      <span class="pill">Inteligência Artificial</span><span class="pill">Cinema</span>
+      <a class="pill" href="#psicanalise">Psicanálise</a><a class="pill" href="#filosofia">Filosofia</a><a class="pill" href="#teatro">Teatro</a>
+      <a class="pill" href="#economia">Economia</a><a class="pill" href="#neurociencia">Neurociência</a><a class="pill" href="#historia">História</a>
+      <a class="pill" href="#ia">Inteligência Artificial</a><a class="pill" href="#cinema">Cinema</a>
     </div>
   </div>
 </header>
@@ -111,35 +111,35 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
     <p class="lead">Os campos não aparecem como compartimentos. Cada um oferece uma linguagem diferente para uma mesma pergunta: como o ser humano se constitui, deseja, sofre, cria, troca, representa e transforma o mundo?</p>
   </div>
   <div class="longform">
-    <article>
-      <h3>Psicanálise & Filosofia</h3>
+    <article id="psicanalise">
+      <h3>Psicanálise</h3>
       <p>A psicanálise interessa aqui menos como repertório de definições do que como investigação daquilo que escapa à consciência. Freud desloca o sujeito de sua pretensão de transparência; Lacan radicaliza esse deslocamento ao situá-lo na linguagem, no desejo e na falta.</p>
-      <p>A filosofia entra no mesmo campo como exercício de problematização: Platão pensa o eros como movimento da falta; Spinoza pergunta pela potência dos afetos; Nietzsche interroga os valores que estruturam nossas interpretações; Butler mostra a dependência constitutiva do sujeito em relação ao outro.</p>
+      <span id="filosofia"></span><p>A filosofia entra no mesmo campo como exercício de problematização: Platão pensa o eros como movimento da falta; Spinoza pergunta pela potência dos afetos; Nietzsche interroga os valores que estruturam nossas interpretações; Butler mostra a dependência constitutiva do sujeito em relação ao outro.</p>
       <p>O ponto de encontro é o problema do sujeito: não uma unidade acabada, mas uma formação histórica, simbólica, corporal e relacional. A leitura filosófica impede que a psicanálise se feche num vocabulário clínico; a psicanálise impede que a filosofia esqueça o inconsciente, a fantasia e o conflito.</p>
       <p>O interesse, portanto, está nos conceitos que atravessam épocas: desejo, identificação, angústia, amor, falta, reconhecimento, alteridade e laço social.</p>
       <p class="ref">Diálogos de referência: Freud, Lacan, Platão, Spinoza, Nietzsche, Butler, Ricoeur.</p>
     </article>
-    <article>
-      <h3>Teatro & Dramaturgia</h3>
+    <article id="teatro">
+      <h3>Teatro e Dramaturgia</h3>
       <p>O teatro transforma conceitos em corpo, tempo, presença e risco. Aquilo que na filosofia aparece como problema e na psicanálise como estrutura pode, em cena, tornar-se gesto, pausa, voz, conflito e relação.</p>
       <p>A formação do ator oferece um laboratório singular da subjetividade. Stanislavski, Meisner e a análise ativa não tratam a emoção como decoração, mas como consequência de ações, objetivos, circunstâncias e relações concretas.</p>
       <p>A dramaturgia interessa também como forma de pensamento. Heiner Müller, Shakespeare e a escrita contemporânea mostram que uma peça pode argumentar sem se tornar tratado: o conflito encena ideias e obriga o espectador a habitar posições incompatíveis.</p>
-      <p>Os projetos teatrais reunidos aqui procuram cruzar corpo, ciência, desejo e linguagem, sem abandonar a autonomia estética da cena.</p>
+      <span id="cinema"></span><p>Os projetos teatrais reunidos aqui procuram cruzar corpo, ciência, desejo e linguagem, sem abandonar a autonomia estética da cena.</p>
       <p class="ref">Diálogos de referência: Stanislavski, Meisner, Shakespeare, Heiner Müller, Anne Bogart.</p>
     </article>
-    <article>
-      <h3>Neurociência, Saúde & Medicina 3.0</h3>
+    <article id="neurociencia">
+      <h3>Neurociência Saúde e Medicina 3.0</h3>
       <p>A neurociência abre uma escala distinta de observação: plasticidade, memória, percepção, sono, envelhecimento e regulação metabólica. O desafio é integrar evidências biológicas sem reduzir a experiência humana ao cérebro.</p>
       <p>O interesse por Medicina 3.0 desloca a clínica do tratamento tardio para a prevenção, o acompanhamento longitudinal e a interpretação de trajetórias biométricas. Dados só ganham valor quando inseridos em contexto e relacionados a decisões concretas.</p>
       <p>Projetos de monitoramento metabólico e biomecânico aparecem neste site como estudos pessoais e educacionais. Não substituem avaliação médica; funcionam como interfaces para organizar informação, perguntas e acompanhamento.</p>
       <p>A questão central é metodológica: como combinar medição, evidência científica, experiência subjetiva e prudência clínica sem transformar saúde em fetiche de números?</p>
       <p class="ref">Diálogos de referência: literatura biomédica contemporânea, prevenção, neuroplasticidade e ciência do envelhecimento.</p>
     </article>
-    <article>
-      <h3>Economia, História & Inteligência Artificial</h3>
+    <article id="economia">
+      <h3>Economia História e Inteligência Artificial</h3>
       <p>A formação econômica introduz uma atenção permanente a incentivos, instituições, escassez, poder e escolha coletiva. Nenhuma subjetividade existe fora de estruturas materiais; nenhum sistema econômico existe sem pressupostos sobre comportamento humano.</p>
-      <p>A história impede que o presente pareça natural. Instituições, categorias e valores são resultados de processos. Ler historicamente é descobrir que aquilo que parece inevitável foi construído — e pode ser transformado.</p>
-      <p>A inteligência artificial acrescenta um problema novo: sistemas capazes de participar da produção intelectual, da escrita, da análise e da criação. O interesse não é celebrar a técnica, mas investigar o que muda quando a cognição passa a ser distribuída entre humanos e modelos.</p>
+      <span id="historia"></span><p>A história impede que o presente pareça natural. Instituições, categorias e valores são resultados de processos. Ler historicamente é descobrir que aquilo que parece inevitável foi construído — e pode ser transformado.</p>
+      <span id="ia"></span><p>A inteligência artificial acrescenta um problema novo: sistemas capazes de participar da produção intelectual, da escrita, da análise e da criação. O interesse não é celebrar a técnica, mas investigar o que muda quando a cognição passa a ser distribuída entre humanos e modelos.</p>
       <p>Nesse encontro, economia, história e IA tornam-se instrumentos para pensar transformação social, trabalho intelectual, autoria e novos regimes de conhecimento.</p>
       <p class="ref">Diálogos de referência: economia institucional, história intelectual, filosofia da técnica e estudos críticos de IA.</p>
     </article>
