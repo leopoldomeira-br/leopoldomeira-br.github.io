@@ -32,7 +32,7 @@ nav{
 .brand{font-weight:800;letter-spacing:.22em;font-size:.82rem;text-decoration:none}
 .navlinks{display:flex;gap:24px}
 .navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem}
-.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover{color:var(--ink)}.menu-toggle{display:none;background:transparent;border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;font-size:1.2rem;line-height:1;padding:8px 10px;cursor:pointer}
 .hero{max-width:var(--max);margin:auto;min-height:82vh;padding:11vh 24px 7vh;display:grid;align-items:center}
 .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.22em;font-size:.75rem}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500}
@@ -79,7 +79,9 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
   .section-head,.contact{grid-template-columns:1fr}.projects,.works{grid-template-columns:1fr 1fr}.longform{grid-template-columns:1fr}
 }
 @media(max-width:620px){
-  nav{padding:15px 18px}.navlinks{display:none}.hero{padding-left:18px;padding-right:18px}
+  nav{padding:15px 18px;position:sticky}.menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .navlinks{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;padding:16px 18px 20px;flex-direction:column;gap:14px;background:rgba(11,12,14,.98);border-bottom:1px solid var(--line)}
+  .navlinks.open{display:flex}.navlinks a{font-size:1rem}.hero{padding-left:18px;padding-right:18px}
   section{padding:70px 18px}.projects,.works{grid-template-columns:1fr}.card{min-height:auto}
 }
 </style>
@@ -87,7 +89,8 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
 <body>
 <nav>
   <a class="brand" href="#inicio">LEO / 2026</a>
-  <div class="navlinks">
+  <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+  <div class="navlinks" id="mobile-menu">
     <a href="#campos">Campos</a><a href="#projetos">Projetos</a><a href="#trabalhos">Trabalhos</a><a href="#contato">Contato</a>
   </div>
 </nav>
@@ -242,6 +245,17 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const menuButton=document.querySelector('.menu-toggle');
+const menu=document.querySelector('#mobile-menu');
+menuButton.addEventListener('click',()=>{
+  const open=menu.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded',String(open));
+  menuButton.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+  menuButton.textContent=open?'×':'☰';
+});
+menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+  menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menu');menuButton.textContent='☰';
+}));
 </script>
 </body>
 </html>
