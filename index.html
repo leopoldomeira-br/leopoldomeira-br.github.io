@@ -71,7 +71,13 @@ h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1;margin:0}
 .note{font-size:.77rem;color:#807b74;margin-top:12px}
 .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
 .contact-box{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:#121419}
-.email{font-family:Georgia,serif;font-size:clamp(1.45rem,3vw,2.4rem);word-break:break-word;text-decoration:none;color:var(--gold)}
+.contact-form{display:grid;gap:14px}
+.contact-form label{color:#d9d3ca;font-size:.88rem}
+.contact-form input,.contact-form textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:#0d0f13;color:var(--ink);font:inherit;line-height:1.45}
+.contact-form textarea{min-height:150px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid rgba(216,179,106,.55);outline-offset:2px;border-color:var(--gold)}
+.contact-submit{justify-content:center;cursor:pointer;font:inherit}
+.honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;border-top:1px solid var(--line);font-size:.82rem}
 .fade{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
 .fade.in{opacity:1;transform:none}
@@ -230,9 +236,21 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
       <p class="lead">Para comentários sobre ensaios, teatro, psicanálise, filosofia, IA e projetos interdisciplinares.</p>
     </div>
     <div class="contact-box">
-      <div class="tag">E-mail</div>
-      <p><a class="email" href="mailto:contato@leopoldomeira.com.br">contato@leopoldomeira.com.br</a></p>
-      <p class="note">Domínio de publicação: leopoldomeira.com.br</p>
+      <div class="tag">Envie uma mensagem</div>
+      <form class="contact-form" action="https://formsubmit.co/contato@leopoldomeira.com.br" method="POST">
+        <input type="hidden" name="_subject" value="Nova mensagem pelo site leopoldomeira.com.br">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://leopoldomeira.com.br/mensagem-enviada.html">
+        <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="name" required>
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" required></textarea>
+        <button class="btn primary contact-submit" type="submit">Enviar mensagem</button>
+      </form>
+      <p class="note">Ou escreva para <a href="mailto:contato@leopoldomeira.com.br">contato@leopoldomeira.com.br</a>.</p>
     </div>
   </div>
 </section>
