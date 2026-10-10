@@ -24,6 +24,8 @@ body{
   line-height:1.75;
 }
 a{color:inherit}
+[id]{scroll-margin-top:100px}
+.longform article.cinema{grid-column:1 / -1}
 nav{
   position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
   padding:17px max(24px,calc((100vw - var(--max))/2));background:rgba(11,12,14,.78);
@@ -97,7 +99,7 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
   <a class="brand" href="#inicio">LEO / 2026</a>
   <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
   <div class="navlinks" id="mobile-menu">
-    <a href="#campos">Campos</a><a href="#projetos">Projetos</a><a href="#trabalhos">Trabalhos</a><a href="#contato">Contato</a>
+    <a href="#sobre">Sobre</a><a href="#campos">Campos</a><a href="#projetos">Projetos</a><a href="#trabalhos">Trabalhos</a><a href="#contato">Contato</a>
   </div>
 </nav>
 
@@ -113,6 +115,16 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
     </div>
   </div>
 </header>
+
+<section id="sobre" class="fade" aria-labelledby="sobre-titulo">
+  <div class="section-head">
+    <div><div class="eyebrow">Sobre</div><h2 id="sobre-titulo">Um percurso entre saberes.</h2></div>
+    <div class="lead">
+      <p>Sou Antonio Leopoldo Meira, Leo. Economista e estudante de teatro na Escola Macunaíma, dedico-me também ao estudo da filosofia e da psicanálise.</p>
+      <p>Este espaço reúne minha produção e meus percursos de leitura, em diálogo com a história, a neurociência, o cinema e a inteligência artificial. Ensaios, dramaturgia e projetos editoriais dão forma a essas investigações.</p>
+    </div>
+  </div>
+</section>
 
 <section id="campos" class="fade">
   <div class="section-head">
@@ -133,11 +145,11 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
       <p>O teatro transforma conceitos em corpo, tempo, presença e risco. Aquilo que na filosofia aparece como problema e na psicanálise como estrutura pode, em cena, tornar-se gesto, pausa, voz, conflito e relação.</p>
       <p>A formação do ator oferece um laboratório singular da subjetividade. Stanislavski, Meisner e a análise ativa não tratam a emoção como decoração, mas como consequência de ações, objetivos, circunstâncias e relações concretas.</p>
       <p>A dramaturgia interessa também como forma de pensamento. Heiner Müller, Shakespeare e a escrita contemporânea mostram que uma peça pode argumentar sem se tornar tratado: o conflito encena ideias e obriga o espectador a habitar posições incompatíveis.</p>
-      <span id="cinema"></span><p>Os projetos teatrais reunidos aqui procuram cruzar corpo, ciência, desejo e linguagem, sem abandonar a autonomia estética da cena.</p>
+      <p>Os projetos teatrais reunidos aqui procuram cruzar corpo, ciência, desejo e linguagem, sem abandonar a autonomia estética da cena.</p>
       <p class="ref">Diálogos de referência: Stanislavski, Meisner, Shakespeare, Heiner Müller, Anne Bogart.</p>
     </article>
     <article id="neurociencia">
-      <h3>Neurociência Saúde e Medicina 3.0</h3>
+      <h3>Neurociência, Saúde e Medicina 3.0</h3>
       <p>A neurociência abre uma escala distinta de observação: plasticidade, memória, percepção, sono, envelhecimento e regulação metabólica. O desafio é integrar evidências biológicas sem reduzir a experiência humana ao cérebro.</p>
       <p>O interesse por Medicina 3.0 desloca a clínica do tratamento tardio para a prevenção, o acompanhamento longitudinal e a interpretação de trajetórias biométricas. Dados só ganham valor quando inseridos em contexto e relacionados a decisões concretas.</p>
       <p>Projetos de monitoramento metabólico e biomecânico aparecem neste site como estudos pessoais e educacionais. Não substituem avaliação médica; funcionam como interfaces para organizar informação, perguntas e acompanhamento.</p>
@@ -145,12 +157,18 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
       <p class="ref">Diálogos de referência: literatura biomédica contemporânea, prevenção, neuroplasticidade e ciência do envelhecimento.</p>
     </article>
     <article id="economia">
-      <h3>Economia História e Inteligência Artificial</h3>
+      <h3>Economia, História e Inteligência Artificial</h3>
       <p>A formação econômica introduz uma atenção permanente a incentivos, instituições, escassez, poder e escolha coletiva. Nenhuma subjetividade existe fora de estruturas materiais; nenhum sistema econômico existe sem pressupostos sobre comportamento humano.</p>
       <span id="historia"></span><p>A história impede que o presente pareça natural. Instituições, categorias e valores são resultados de processos. Ler historicamente é descobrir que aquilo que parece inevitável foi construído — e pode ser transformado.</p>
       <span id="ia"></span><p>A inteligência artificial acrescenta um problema novo: sistemas capazes de participar da produção intelectual, da escrita, da análise e da criação. O interesse não é celebrar a técnica, mas investigar o que muda quando a cognição passa a ser distribuída entre humanos e modelos.</p>
       <p>Nesse encontro, economia, história e IA tornam-se instrumentos para pensar transformação social, trabalho intelectual, autoria e novos regimes de conhecimento.</p>
       <p class="ref">Diálogos de referência: economia institucional, história intelectual, filosofia da técnica e estudos críticos de IA.</p>
+    </article>
+    <article id="cinema" class="cinema">
+      <h3>Cinema</h3>
+      <p>O cinema oferece outra maneira de investigar o sujeito: imagens, sons, montagem e duração tornam visíveis conflitos, desejos e formas de vida. Um filme pode colocar em questão aquilo que parecia evidente e abrir espaço para diferentes interpretações.</p>
+      <p>Neste percurso, o interesse está nas relações entre cinema, filosofia e psicanálise: memória, identidade, fantasia, reconhecimento e laço social. O diálogo com o teatro acrescenta uma atenção à atuação, ao gesto, à voz e à presença diante da câmera.</p>
+      <p class="ref">Percursos de leitura: linguagem cinematográfica, análise da atuação e interpretação filosófica e psicanalítica de filmes.</p>
     </article>
   </div>
 </section>
@@ -169,7 +187,7 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
         <a class="btn primary" href="psicanalise-explicada-parte-i.html">Parte I — Filosofia da Obra</a>
         <a class="btn" href="psicanalise-explicada-parte-ii.html">Parte II — O Método</a>
       </div>
-      <div class="note">Parte I disponível para leitura no site; Parte II em DOCX.</div>
+      <div class="note">Partes I e II disponíveis para leitura no site.</div>
     </article>
     <article class="card">
       <span class="tag">Dramaturgia</span>
@@ -191,7 +209,7 @@ footer{max-width:var(--max);margin:auto;padding:35px 24px 60px;color:#77736d;bor
 <section id="trabalhos" class="fade">
   <div class="section-head">
     <div><div class="eyebrow">03 — Trabalhos</div><h2>Ensaios, estudos e interfaces.</h2></div>
-    <p class="lead">Os cartões abaixo têm links diretos para os arquivos existentes no pacote. Não há botões cenográficos: cada acesso aponta para um trabalho real.</p>
+    <p class="lead">Explore ensaios, estudos e experiências visuais. Cada trabalho traz uma breve apresentação e acesso à leitura; os formatos disponíveis estão indicados nos botões.</p>
   </div>
   <div class="works">
     <article class="card">
