@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tabela Alimentar Renal: alimentos classificados por potássio, fósforo e carga glicêmica para doença renal crônica e diabetes tipo 2. ANTONIO LEOPOLDO MEIRA.">
+<meta name="author" content="ANTONIO LEOPOLDO MEIRA">
+<title>Tabela Alimentar Renal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cabeçalho editorial com a base clínica (rim e glicemia), barra de filtros fixa e uma tabela por grupo, com os itens ordenados de Evitar a Preferencial; no celular cada linha vira um cartão. */
+:root{
+  --bg:#FBF9F9; --surface:#FFFFFF; --ink:#211B1D; --muted:#6B6063; --line:#E8E0E2;
+  --accent:#6B0F1A; --accent-soft:#F4E7E9;
+  --pref:#25613F; --pref-soft:#E2F0E7;
+  --mod:#7A5F00; --mod-soft:#F6EFCC;
+  --lim:#A8470A; --lim-soft:#FBE5D4;
+  --evit:#211B1D; --evit-ink:#FFFFFF;
+  --serif:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161112; --surface:#1E1819; --ink:#EFE8EA; --muted:#A89CA0; --line:#352C2F;
+  --accent:#E0909B; --accent-soft:#2E1B1F;
+  --pref:#86CCA3; --pref-soft:#1B2D23;
+  --mod:#DDBD4E; --mod-soft:#2E2912;
+  --lim:#F29A66; --lim-soft:#35210F;
+  --evit:#EFE8EA; --evit-ink:#161112; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161112; --surface:#1E1819; --ink:#EFE8EA; --muted:#A89CA0; --line:#352C2F;
+  --accent:#E0909B; --accent-soft:#2E1B1F;
+  --pref:#86CCA3; --pref-soft:#1B2D23;
+  --mod:#DDBD4E; --mod-soft:#2E2912;
+  --lim:#F29A66; --lim-soft:#35210F;
+  --evit:#EFE8EA; --evit-ink:#161112; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.45;
+  padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto}
+header{padding-top:40px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-weight:500;font-size:clamp(38px,7vw,64px);line-height:1.02;margin:10px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+.lede{max-width:66ch;color:var(--muted);font-size:20px;margin:0}
+.rule{height:3px;background:var(--accent);margin:26px 0 0;width:72px}
+.baselabel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:26px 0 0}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px 22px;margin:12px 0 0}
+.base div{border-left:2px solid var(--line);padding-left:12px}
+.base div.hi{border-color:var(--lim)}
+.base b{display:block;font-weight:500;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.base div.hi b{color:var(--lim)}
+.base span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.rulebox{margin:22px 0 0;padding:14px 18px;border:1px solid var(--line);background:var(--surface);max-width:80ch}
+.rulebox strong{font-weight:500}
+.rulebox p{margin:4px 0 0;color:var(--muted);font-size:17px}
+.rulebox ul{margin:6px 0 0;padding-left:20px;color:var(--muted);font-size:17px}
+.rulebox li{margin:4px 0}
+.jump{display:flex;flex-wrap:wrap;gap:6px 18px;margin:22px 0 0;padding:0;list-style:none;font-size:16px}
+.jump a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.jump a:hover{color:var(--accent);border-color:var(--accent)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);margin-top:26px;padding:12px 0;border-block:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.search{flex:1 1 220px;min-width:0}
+.search input{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:8px 12px;border-radius:4px}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+button.chip{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink);background:var(--surface);border:1px solid var(--line);
+  padding:7px 11px;border-radius:4px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+button.chip b{font-weight:500;color:var(--muted)}
+button.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button.chip[aria-pressed="true"] b{color:inherit;opacity:.75}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+details.panel{margin:18px 0 0;border:1px solid var(--line);background:var(--surface);padding:14px 18px}
+details.panel summary{cursor:pointer;font-weight:500;font-size:19px}
+details.panel p{margin:10px 0 6px;color:var(--muted);font-size:17px}
+details.panel h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:400;margin:16px 0 4px}
+details.panel ul,details.panel ol{margin:6px 0 0;padding-left:22px;font-size:17px}
+details.panel li{margin:3px 0}
+.was{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+section{margin-top:44px;scroll-margin-top:90px}
+section h2{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:30px;margin:0;padding-top:12px;border-top:2px solid var(--accent)}
+section h2 small{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:400}
+.gnote{margin:6px 0 0;color:var(--muted);font-size:16px;max-width:84ch}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:400;padding:8px 12px 8px 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+tbody td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:not(.sub):hover td{background:var(--accent-soft)}
+tr.sub td{padding:18px 0 6px;border-bottom:1px solid var(--ink)}
+tr.sub .n{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:10px}
+td.name{font-size:19px;font-weight:500;min-width:190px}
+td.por,td.k,td.p,td.gl{font-family:var(--mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums;padding-top:14px}
+td.k,td.p{min-width:76px}
+td.gl{min-width:112px}
+.kv{display:block}
+.kv.none{color:var(--muted)}
+.kb{display:block;height:3px;background:var(--line);margin-top:5px;width:64px;border-radius:2px}
+.kb i{display:block;height:100%;border-radius:2px}
+.lv-P{background:var(--pref)} .lv-M{background:var(--mod)} .lv-L{background:var(--lim)}
+.cgv{display:block}
+.cgv.c-P{color:var(--pref)} .cgv.c-M{color:var(--mod)} .cgv.c-L{color:var(--lim)}
+.igl{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.igl sup{font-size:9px}
+td.cls{white-space:nowrap}
+td.obs{color:var(--muted);font-size:16px;min-width:200px}
+td.m{display:none}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;padding:3px 10px 3px 8px;border-radius:3px;font-weight:500;margin-top:3px}
+.pill.pref{background:var(--pref-soft);color:var(--pref)}
+.pill.mod{background:var(--mod-soft);color:var(--mod)}
+.pill.lim{background:var(--lim-soft);color:var(--lim)}
+.pill.evit{background:var(--evit);color:var(--evit-ink)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;border:1px solid var(--line);color:var(--muted);padding:1px 6px;border-radius:3px;margin-right:4px;cursor:help}
+.flag{font-style:italic;font-weight:400;font-size:14px;color:var(--accent);margin-left:8px}
+.empty{padding:40px 0;color:var(--muted);text-align:center}
+.audit-inline{margin-top:7px;font-family:var(--mono);font-size:11px;line-height:1.5}.audit-inline summary{cursor:pointer;color:var(--accent)}.audit-inline span{display:block;margin-top:4px;color:var(--muted)}
+
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px}
+footer strong{font-weight:500;color:var(--ink)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 20px;margin:12px 0 18px;padding:0;list-style:none}
+.legend .tag{margin-right:8px}
+.src{display:flex;flex-wrap:wrap;gap:4px 18px;margin:10px 0 0;padding:0;list-style:none}
+.src a{color:var(--accent)}
+.sig{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink);margin-top:14px}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  thead{display:none}
+  .tw{overflow:visible}
+  table,tbody{display:block}
+  tbody tr{display:grid;grid-template-columns:1fr auto;gap:3px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  tbody td{display:block;border:0;padding:0;min-width:0}
+  tbody tr:not(.sub):hover td{background:transparent}
+  tr.sub{display:block;padding:0;border:0}
+  tr.sub td{display:block;padding:18px 0 6px;border-bottom:1px solid var(--ink)}
+  td.name{grid-column:1;grid-row:1;min-width:0}
+  td.cls{grid-column:2;grid-row:1}
+  td.por,td.k,td.p,td.gl{display:none}
+  td.m{display:block;grid-column:1 / -1;grid-row:2;font-family:var(--mono);font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+  td.m span{color:var(--muted)}
+  td.obs{grid-column:1 / -1;grid-row:3;min-width:0;padding-top:2px}
+  td.obs:empty{display:none}
+}
+@media (prefers-reduced-motion:no-preference){button.chip{transition:background .15s,color .15s}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Doença renal crônica e diabetes tipo 2 · porções de referência</div>
+  <h1>Tabela Alimentar Renal</h1>
+  <p class="lede">Porções por alimento, com potássio, fósforo, carboidrato e carga glicêmica por porção. A categoria é orientação educativa, não uma proibição automática: depende da porção, do preparo, dos exames e da refeição completa. Em cada grupo, os itens seguem a ordem Evitar, Limitar, Moderação, Preferencial. Quinta revisão clínica, de 7 de novembro de 2026. Valores de composição herdados da edição anterior, com rastreabilidade e pendências de validação sinalizadas.</p>
+  <div class="rule"></div>
+  <p class="baselabel">Base clínica desta revisão</p>
+  <div class="base">
+    <div class="hi"><b>5,3</b><span>POTÁSSIO mmol/L · ref. 3,5–5,1</span></div>
+    <div><b>48</b><span>TFG mL/min/1,73m² · estágio G3a</span></div>
+    <div><b>4,3</b><span>FÓSFORO mg/dL · ref. 2,5–4,5</span></div>
+    <div class="hi"><b>7,8</b><span>ÁCIDO ÚRICO mg/dL · ref. até 7,0</span></div>
+    <div class="hi"><b>70,8</b><span>UREIA mg/dL · ref. até 49</span></div>
+    <div><b>7,2 → 5,4</b><span>HbA1c % · dez/2025 → jun/2026; confirmar nos laudos</span></div>
+    <div class="hi"><b>165,4</b><span>GLICEMIA PÓS-PRANDIAL mg/dL · ref. abaixo de 140</span></div>
+    <div class="hi"><b>182</b><span>TRIGLICERÍDEOS mg/dL · HDL 33</span></div>
+  </div>
+  <div class="rulebox">
+    <strong>Critério glicêmico — leitura orientativa</strong>
+    <p>Diabetes tipo 2 há mais de 20 anos. A carga glicêmica (CG) por porção é um indicador complementar: até 10, baixa; de 11 a 19, intermediária; 20 ou mais, alta. IG estimado ou desconhecido não determina sozinho a classificação. Açúcares livres, doces e bebidas açucaradas ficam em Evitar. Alimentos-base de amido refinado (arroz, macarrão, cuscuz, tapioca, pão, farinha) ficam no mínimo em Moderação, porque o prato real costuma ser maior que a porção da tabela.</p>
+  </div>
+  <div class="rulebox">
+    <strong>Com Mounjaro (tirzepatida)</strong>
+    <ul>
+      <li>Hipoglicemia: a bula informa que o risco é maior quando o Mounjaro é associado a insulina ou sulfonilureia. Como você não usa nenhum dos dois, o risco é baixo, mas jejum prolongado e álcool ainda merecem cuidado.</li>
+      <li>Rim e líquidos: náusea, vômito e diarreia podem causar desidratação, e foram descritos casos de lesão renal aguda.</li>
+    </ul>
+  </div>
+<div class="rulebox" id="audit-note"><strong>Quinta revisão · transparência dos dados</strong><p>Foram auditadas estruturalmente todas as entradas do cadastro. Os valores numéricos de potássio, fósforo, carboidratos e IG vieram do arquivo anterior e <strong>não foram todos confirmados individualmente</strong> contra registros identificados da TBCA, TACO ou USDA. A indicação “a conferir” não significa que o número esteja errado: significa que falta rastreabilidade individual. Valores ausentes não são zero. Classificações são orientativas, não prescrições.</p><p>Com TFG de 48 mL/min/1,73 m², potássio de 5,3 mmol/L e preocupação com sarcopenia, evitar restrição indiscriminada de vegetais e proteínas. A referência KDIGO de 0,8 g/kg/dia (64 g/dia para 80 kg) deve ser individualizada em idosos com fragilidade ou sarcopenia. Repetir exames e discutir com nefrologista e nutricionista renal.</p></div>
+  <ul class="jump" id="jump"></ul>
+</header>
+
+<div class="bar" role="toolbar" aria-label="Filtros">
+  <div class="search"><input id="q" type="search" placeholder="Buscar alimento ou observação" aria-label="Buscar alimento"></div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<details class="panel" id="changes">
+  <summary>O que mudou nesta revisão</summary>
+  <p id="chg-intro"></p>
+  <h3>Sobem de risco pelo critério glicêmico</h3>
+  <ul id="chg-up"></ul>
+</details>
+
+<details class="panel">
+  <summary>Perguntas para levar ao endocrinologista e ao nefrologista</summary>
+  <ol>
+    <li>O potássio de 5,3 pode ser repetido em plasma, com coleta sem garrote prolongado, junto com bicarbonato?</li>
+    <li>Qual a dose adequada do Mounjaro para mim, considerando a idade, o apetite reduzido e a função renal atual?</li>
+    <li>Náusea, vômito, diarreia ou pouca ingestão de líquidos podem explicar a ureia de 70,8? Quando repetir creatinina e potássio?</li>
+    <li>A glicemia pós-prandial de 165 indica que a refeição principal precisa de ajuste de dose ou de carboidrato?</li>
+    <li>Qual o orçamento de carboidrato por refeição para mim, e qual a meta de proteína, em torno de 0,8 g por kg ao dia?</li>
+    <li>Algum dos meus medicamentos eleva o potássio (IECA, BRA, espironolactona, anti-inflamatórios), e pode ser ajustado?</li>
+    <li>Qual adoçante posso usar, considerando potássio, sódio e a evidência disponível?</li>
+    <li>Com fósforo de 4,3 e PTH normal, basta retirar os aditivos fosfatados, sem quelante?</li>
+  </ol>
+</details>
+
+<main id="out"></main>
+
+<footer>
+  <strong>Como ler</strong>
+  <p>Potássio (K) e fósforo (P) em miligramas por porção, com a barra de potássio em escala de 0 a 500 mg: verde até 150, amarelo até 250, laranja acima. Carboidrato (CHO) em gramas disponíveis. CG = IG × carboidrato da porção ÷ 100. O nível final é um alerta operacional, não uma indicação clínica automática. Os cortes de potássio e carga glicêmica não são limiares universais de diretrizes. Não há reclassificação automática após um único exame de potássio; a decisão requer avaliação clínica.</p>
+  <ul class="legend" id="legend"></ul>
+  <p>A letra E indica estimativa, não medida direta. Ausência de IG ou carboidrato não significa CG zero. As letras ao lado do IG indicam a origem do valor: T é o IG medido em alimentos brasileiros (TBCA, USP); A vem das tabelas internacionais de Atkinson e colaboradores; E é estimativa por alimento semelhante, sem medida direta. O IG varia com variedade, grau de maturação, tempo de cozimento e combinação com outros alimentos, então use os valores como referência de ordem de grandeza. Açúcar livre e adoçantes: a evidência de segurança de alguns adoçantes na doença renal é limitada.</p>
+  <p>As diretrizes atuais não pedem corte amplo de frutas e verduras. Pedem retirar o potássio de alta absorção (sal light e substitutos de sal, ultraprocessados com aditivos, água de coco e sucos), reduzir porções dos itens mais concentrados e cozinhar em bastante água, descartando-a. Cozinhar no vapor, assar ou usar micro-ondas sem água não reduz o potássio. Esses valores são apoio para a conversa com o nefrologista, o endocrinologista e o nutricionista, e dependem dos medicamentos em uso.</p>
+  <p><strong>Rastreabilidade:</strong> bases gerais consultadas na revisão: KDIGO 2024 e metodologia TBCA/USP. As referências abaixo não devem ser interpretadas como confirmação de cada valor individual. Conferir espécie, marca, preparo e porção antes de usar números para prescrição.</p>
+  <ul class="src">
+    <li><a href="https://kdigo.org/wp-content/uploads/2024/03/KDIGO-2024-CKD-Guideline.pdf" target="_blank" rel="noopener">KDIGO 2024 (DRC)</a></li>
+    <li><a href="https://kdigo.org/wp-content/uploads/2023/12/KDIGO-2022-Diabetes-Guideline.pdf" target="_blank" rel="noopener">KDIGO 2022 (diabetes na DRC)</a></li>
+    <li><a href="https://www.ajkd.org/article/S0272-6386(20)30726-5/fulltext" target="_blank" rel="noopener">KDOQI 2020</a></li>
+    <li><a href="https://www.braspenjournal.org/article/10.37111/braspenj.diretrizRENAL/pdf/braspen-36-2,+Supl+2-6537d3eba9539508c618e9b2.pdf" target="_blank" rel="noopener">BRASPEN 2021</a></li>
+    <li><a href="https://cfn.org.br/wp-content/uploads/2017/03/taco_4_edicao_ampliada_e_revisada.pdf" target="_blank" rel="noopener">TACO, 4ª edição</a></li>
+    <li><a href="https://tbca.net.br/arquivosestaticos/Tabelas_Complementares-Resposta-Glicemica_JAN2025.pdf" target="_blank" rel="noopener">TBCA, resposta glicêmica</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2584181/" target="_blank" rel="noopener">Atkinson et al., tabelas de IG</a></li>
+    <li><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/215866s041lbl.pdf" target="_blank" rel="noopener">Bula do Mounjaro (FDA)</a></li>
+  </ul>
+  <p><strong>Revisão 5:</strong> auditoria clínica e de consistência concluída; validação quantitativa item a item ainda pendente. Documento educativo, não substitui plano alimentar individual.</p>
+  <div class="sig">ANTONIO LEOPOLDO MEIRA</div>
+</footer>
+</div>
+
+<script>
+var CL={P:{n:"Preferencial",k:"pref",s:"●"},M:{n:"Moderação",k:"mod",s:"◐"},L:{n:"Limitar",k:"lim",s:"▲"},E:{n:"Evitar",k:"evit",s:"✕"}};
+var TG={Na:"Sódio",Pu:"Purinas",Ox:"Oxalato",Ad:"Aditivos de fosfato ou potássio"};
+var SRC={T:"Medido em alimento brasileiro (TBCA)",A:"Tabelas internacionais (Atkinson)",E:"Estimativa por alimento semelhante"};
+var ORDER=["E","L","M","P"],RANK={P:0,M:1,L:2,E:3};
+var FLAGS={n:"novo",g:"pela glicemia",p:"provisório"};
+var GROUPS=[],GN={},D=[];
+// linha: [alimento, porção, nível renal, atenção, observação, marcas (n novo, p provisório), K mg, P mg, carboidrato g, IG, origem do IG (T, A, E), nível glicêmico]
+function add(g,note,rows){GROUPS.push(g);GN[g]=note;rows.forEach(function(x){
+  var o={g:g,n:x[0],p:x[1],c:x[2],t:x[3]?x[3].split(","):[],o:x[4]||"",s:x[5]||"",k:x[6]===undefined?null:x[6],f:x[7]===undefined?null:x[7],cb:x[8]===undefined?null:x[8],ig:x[9]===undefined?null:x[9],src:x[10]||"",gc:x[11]||"P"};
+  o.cg=(o.ig!==null&&o.cb!==null)?Math.round(o.ig*o.cb/100):null;
+  o.fin=RANK[o.gc]>RANK[o.c]?o.gc:o.c;
+  if(o.fin!==o.c)o.s+="g";
+  D.push(o);});}
+
+add("Verduras e legumes","Cozinhar em bastante água e escorrer reduz o potássio. Vapor, forno e micro-ondas sem água não reduzem.",[
+["Alface (crespa)",50,"P","","A alface americana tem cerca de metade do potássio.","",134,13],
+["Rúcula",40,"P","","","",93,10],
+["Agrião",40,"P","","","",87,20],
+["Repolho",80,"P","","Branco ou roxo, cru.","",120,11],
+["Pepino",80,"P","","","",123,10],
+["Chuchu cozido",100,"P","","Um dos menores teores de potássio.","",54,13],
+["Abobrinha cozida",100,"P","","","",126,22],
+["Couve-flor cozida",80,"P","","","",64,20],
+["Cebola",40,"P","","","",70,15],
+["Pimentão",70,"P","","Verde.","",122,12],
+["Berinjela cozida",80,"P","","","",84,12],
+["Vagem cozida",80,"P","","Servir cozida e escorrida.","",166,22],
+["Quiabo cozido",60,"P","","","",149,34],
+["Rabanete",50,"P","","Os valores variam entre a TACO e a USDA.","","117–164","10–13"],
+["Alho-poró cozido",60,"P","","","",134,22],
+["Aspargo cozido",60,"P","","","",134,32],
+["Brócolis cozido",80,"P","","Cozido em água e escorrido.","",95,26],
+["Cenoura cozida",60,"P","","","",106,16,5,39,"A"],
+["Mandioca (aipim) cozida",70,"P","","Só cozida em água e escorrida. Em 130 g, a CG sobe para 15 (TBCA). O IG varia muito com a variedade e o cozimento.","",70,15,21,40,"T","M"],
+["Nabo cozido",80,"M","","Cru tem 224 mg de potássio. Valor depende do preparo; coluna e observação exigem mesma referência.","",224,14],
+["Couve-manteiga",40,"M","","Cozida e escorrida, não refogada.","",161,20],
+["Beterraba cozida",50,"M","Ox","","",123,15,4,64,"A"],
+["Tomate fresco",60,"M","","","",133,12],
+["Abóbora cozida",80,"M","","","",159,26,5,64,"A"],
+["Cogumelo cozido",50,"M","","","",159,43],
+["Aipo (salsão)",60,"M","","","",164,17],
+["Maxixe",60,"M","","","",197,15],
+["Jiló",60,"M","","","",128,17],
+["Espinafre cozido",40,"L","Ox","A TACO mede o espinafre-da-nova-zelândia. O espinafre comum tem bem mais potássio e oxalato.","","60–134","10–14"],
+["Batata inglesa cozida",80,"L","","IG alto. A USDA traz cerca do dobro da TACO no potássio. Ferver em água e escorrer pode reduzir potássio, mas a redução varia; não assumir 50–75% sem dados do preparo específico.","",129,19,8,81,"T","M"],
+["Batata-doce cozida",70,"L","","Mesmo preparo da batata.","",104,11,13,63,"A"],
+["Acelga cozida",60,"L","Ox","Cozinhar e escorrer.","",144,24],
+["Molho de tomate industrializado",40,"L","Na","Concentrados de tomate podem ter mais potássio por 100 g; verificar marca, porção e rótulo.","",155,11],
+["Palmito em conserva",40,"L","Na","","","82–98","16–22"],
+["Azeitona",20,"L","Na","","","4–16","1–3"],
+["Conservas e picles",30,"L","Na","","",37,15]
+]);
+
+add("Frutas","Prefira a fruta inteira, com casca quando possível, e junto de uma refeição ou de proteína. Suco concentra potássio e açúcar.",[
+["Maçã",100,"P","","","",75,null,10,25,"T"],
+["Pera",100,"P","","","",116,null,12,33,"A"],
+["Abacaxi",100,"P","","","",131,null,11,66,"T"],
+["Morango",80,"P","","","",147,null,5,40,"A"],
+["Uva",80,"P","","","",130,null,11,59,"A"],
+["Melancia",120,"P","","IG alto. A CG é baixa só nesta porção: duas fatias grandes passam de 15.","",125,null,10,76,"A","M"],
+["Pêssego fresco",100,"P","","","",124,null,10,42,"A"],
+["Ameixa fresca",80,"P","","","",107,null,9,39,"A"],
+["Mirtilo",80,"P","","","",62,null,12,53,"E"],
+["Framboesa",80,"P","","","",121,null,4,32,"E"],
+["Cereja",50,"P","","Com 80 g seriam 178 mg de potássio e passaria a Moderação.","",111,null,6,22,"A"],
+["Amora",80,"P","","","",130,null,3,27,"T"],
+["Acerola",80,"P","","Rica em vitamina C.","",132,null,6,20,"E"],
+["Caju",100,"P","","","",124,16,10,30,"E"],
+["Cajá (polpa)",100,"P","","Em suco diluído, 50 g de polpa têm 74 mg de potássio.","",148,26,9,40,"E"],
+["Pitanga",100,"P","","","",113,13,7,30,"E"],
+["Manga",80,"P","","","",110,null,15,51,"A"],
+["Tangerina",100,"P","","","",131,null,9,47,"A"],
+["Mamão",80,"M","","O mamão papaia tem menos potássio que o formosa.","","101–178",null,7,43,"T"],
+["Laranja",100,"M","","Só a fruta inteira, nunca o suco.","",163,null,12,43,"A"],
+["Banana",50,"M","","Porção e frequência dependem do potássio sérico e do conjunto da dieta. A banana-maçã pode diferir em potássio. O IG vai de 51 a 61.","","179–188",null,11,61,"T"],
+["Kiwi",50,"M","","","",135,null,7,50,"A"],
+["Melão",80,"M","","","",173,null,6,65,"A"],
+["Goiaba",60,"M","","","",119,null,5,25,"E"],
+["Caqui",80,"M","","","",131,null,12,50,"E"],
+["Figo fresco",60,"M","","","",104,null,11,55,"E"],
+["Maracujá (polpa)",50,"M","","","",169,null,3,30,"E"],
+["Umbu",100,"M","","","",152,13,9,40,"E"],
+["Graviola",60,"M","","","",150,11,9,50,"E"],
+["Jaca",60,"M","","","",140,8,14,50,"E"],
+["Açaí puro (polpa)",100,"M","","Sem granola, banana, leite em pó ou xarope.","",124,16,6,40,"E"],
+["Abacate",40,"M","","A TACO e a USDA divergem muito. Tratar como alto em potássio.","","82–194",null,3,15,"E"],
+["Coco fresco",30,"L","","","",106,35,3,35,"E"],
+["Banana-da-terra cozida",50,"L","","Cozida em água.","",164,null,14,60,"E"],
+["Uva-passa",15,"L","","Fruta seca concentra potássio e açúcar.","",112,null,11,64,"A"],
+["Ameixa seca",15,"L","","","",110,null,9,29,"A"],
+["Tâmara",15,"L","","","",104,null,11,42,"A"],
+["Carambola","—","E","","Neurotoxina que o rim reduzido não elimina; pode causar confusão, soluços e convulsões. Vale para fruta e suco.","",null,null],
+["Toranja",100,"E","","Interage com vários medicamentos (CYP3A4). Confirmar com o médico antes de voltar a comer.","p",135,null],
+["Tamarindo","—","L","","Concentração varia muito entre polpa, fruto e preparado; falta confirmação da forma e da porção.","p",null,null]
+]);
+
+add("Proteínas animais","Valores para carnes e peixes cozidos em água. Assado e grelhado concentram potássio e fósforo. Meta de referência de cerca de 0,8 g de proteína por kg ao dia (KDIGO 2024), a confirmar com o nefrologista. Com o apetite reduzido pelo Mounjaro, comece a refeição pela proteína para não ficar abaixo dessa meta. Sem carboidrato relevante.",[
+["Clara de ovo",66,"P","","Cerca de 2 claras; boa relação entre proteína e fósforo.","",96,10],
+["Frango sem pele (peito)",90,"P","","Preferir cozido. Grelhado tem mais potássio e fósforo.","",208,202],
+["Peito de peru sem pele",90,"P","","Só fresco e sem tempero industrial.","",267,228],
+["Peixe branco (pescada, merluza)",90,"P","","Cozido ou ensopado.","",228,127],
+["Tilápia assada",90,"M","","Potássio alto para o nível. Conta no total do dia.","",342,184],
+["Ovo inteiro",50,"P","","1 unidade; frequência conforme ingestão proteica e padrão alimentar.","",70,92],
+["Atum em conserva",60,"M","Na","Escorrer. Preferir sem sal e sem pirofosfato.","",168,127],
+["Atum fresco",80,"M","","","",246,203],
+["Camarão cozido",80,"M","Pu,Na","Frequência a individualizar; considerar sódio, preparo e ácido úrico.","",82,213],
+["Carne moída magra",80,"M","","","",205,131],
+["Coxa de frango sem pele",80,"M","","Cozida.","",153,150],
+["Lombo suíno",80,"M","","","",249,190],
+["Ovo de codorna",30,"M","","Cerca de 3 unidades.","",24,84],
+["Patinho bovino",80,"M","","","",337,231],
+["Salmão grelhado",90,"M","","Fonte de ômega-3, mas com potássio e fósforo altos.","",466,317],
+["Truta grelhada",90,"M","","","",405,243],
+["Bacalhau dessalgado",80,"L","Na","Dessalgar com várias trocas de água. O sódio continua alto.","",40,41],
+["Mariscos (mexilhão, ostra)",60,"L","Pu,Na","","",null,null],
+["Sardinha fresca",80,"L","Pu","Potássio, fósforo e purinas altos.","",459,462],
+["Bacon","—","E","Na,Ad","","",null,null],
+["Carne-seca e charque","—","E","Na","","",null,null],
+["Fígado bovino",60,"E","Pu","Purinas e fósforo altos, com o ácido úrico em 7,8.","p",185,252],
+["Linguiça","—","E","Na,Ad","Sódio e fosfatos adicionados.","",null,null],
+["Miúdos (rim, coração, moela)",60,"E","Pu","","p",185,252],
+["Mortadela","—","E","Na,Ad","","",null,null],
+["Peito de peru (embutido)",30,"E","Na,Ad","Ultraprocessado, com possíveis aditivos de potássio e fósforo.","p",111,75],
+["Presunto","—","E","Na,Ad","Sódio e fosfatos adicionados.","",null,null],
+["Salsicha","—","E","Na,Ad","","",null,null]
+]);
+
+add("Leguminosas e soja","Para todos os feijões e grãos: remolho de 12 horas, descartar a água, cozinhar em água nova e não tomar o caldo. A redução de potássio é variável e não deve ser presumida igual para todos os grãos. O IG é baixo, e a CG também na porção indicada.",[
+["Tofu natural firme",80,"P","","","",146,104,2,15,"E"],
+["Feijão-carioca cozido",80,"M","","","","202–205","68–70",6,38,"T"],
+["Feijão-fradinho cozido",80,"M","","","","202–205","68–70",12,42,"A"],
+["Feijão-preto cozido",80,"M","","","","202–205","68–70",8,30,"A"],
+["Feijão-vermelho cozido",70,"M","","","","188–284","74–99",10,24,"A"],
+["Grão-de-bico cozido",70,"M","","O enlatado, enxaguado e recozido tem o menor potássio.","",204,118,16,24,"T"],
+["Homus",30,"M","Na","Tem cerca de 114 mg de sódio. O caseiro é melhor.","",68,53,4,6,"E"],
+["Lentilha cozida",80,"M","","Remolho e cocção podem reduzir potássio em proporção variável; não assumir redução de 80%.","",176,83,13,32,"A"],
+["Ervilha cozida",70,"M","","A enlatada tem cerca de 260 mg de sódio.","","103–190","55–82",10,48,"A"],
+["Edamame cozido",60,"L","","","",262,101,3,18,"E"],
+["Feijão-azuki cozido",70,"L","","","",372,118,17,35,"E"],
+["Feijão-branco cozido",70,"L","","","",272,98,17,31,"E"],
+["Proteína de soja texturizada","15–20 g seca","L","","Hidratar em água quente e descartar a água.","","375–500","105–145"],
+["Soja em grãos cozida",50,"L","","","",258,123,3,16,"A"],
+["Tempeh",60,"L","","","",247,160,6,15,"E"]
+]);
+
+add("Sementes e oleaginosas","Nas porções pequenas, o fósforo pesa mais que o potássio. Pouco carboidrato disponível.",[
+["Chia",10,"M","","Hidratar antes de consumir.","",41,86],
+["Linhaça",10,"M","","Consumir triturada.","",87,62],
+["Gergelim",10,"M","Ox","","",55,74],
+["Semente de girassol",10,"M","","","",65,66],
+["Amêndoas",15,"M","","","","80–102","44–89"],
+["Avelã",15,"M","","","","80–102","44–89"],
+["Castanha-de-caju",15,"M","","","","80–102","44–89"],
+["Nozes",15,"M","","","","80–102","44–89"],
+["Amendoim sem sal",15,"M","","","","80–102","44–89"],
+["Castanha-do-pará",5,"M","","1 unidade. Rica em selênio, não exceder.","",33,43],
+["Macadâmia",15,"M","","Entre as oleaginosas, a de menor potássio e fósforo.","",55,28],
+["Pasta de amendoim sem sal",15,"M","","Sem açúcar.","",84,50],
+["Pistache sem sal",15,"L","","","",154,74],
+["Semente de abóbora",10,"L","","Fósforo alto.","",81,123],
+["Castanhas salgadas","—","E","Na","Preferir sempre as versões sem sal.","",null,null]
+]);
+
+add("Cereais e tubérculos","A base de energia com pouco potássio, mas com a maior parte da carga glicêmica do dia. Combinar sempre com proteína, fibra e verduras na mesma refeição.",[
+["Arroz branco cozido",80,"P","","Tabelas internacionais trazem IG de 73. Em prato de 150 g, a CG é 18 (TBCA). Combinar com feijão e salada.","",12,14,22,57,"T","M"],
+["Cuscuz de milho cozido",80,"P","Na","Com pouco sal. Sem IG medido para o cuscuz de milho; usado o do cuscuz de trigo.","",9,18,20,65,"E","M"],
+["Macarrão cozido",80,"P","","Al dente. Em prato de 180 g, a CG é 21 (TBCA).","",35,46,19,49,"T","M"],
+["Tapioca pronta",50,"P","","Pouco potássio e fósforo, mas IG alto estimado, sem valor medido. Recheio doce ou porção dobrada eleva a CG. Combinar com ovo ou queijo.","","10–24","4–30",21,70,"E","M"],
+["Angu / polenta cozida",100,"P","","","n",null,null,14,60,"T","M"],
+["Arroz integral cozido",80,"M","","Mais fósforo que o branco.","",60,85,21,68,"A","M"],
+["Aveia em flocos",30,"M","","","",101,46,15,39,"T"],
+["Cará (inhame baiano) cozido",70,"M","","","",142,20,17,53,"E"],
+["Farinha de mandioca",20,"M","","A farofa pronta tem muito sódio.","",66,8,16,52,"T","M"],
+["Macarrão integral cozido",80,"M","","","",null,null,17,43,"T"],
+["Milho cozido",70,"M","","","","130–153","54–79",15,52,"A"],
+["Pão branco (francês)",40,"M","Na","Cerca de 260 mg de sódio.","",57,38,16,70,"T","M"],
+["Pão de forma branco",50,"M","Na","","n",null,null,21,68,"T","M"],
+["Pão de forma com grãos",50,"M","Na","IG baixo medido, mas sódio e fósforo pedem moderação.","n",null,null,19,27,"T"],
+["Pão integral",40,"M","Na","Os pães com grãos inteiros e sementes têm IG menor (44 a 49).","",null,null,18,71,"T","M"],
+["Pipoca sem sal",20,"M","","","",51,45,12,65,"A"],
+["Quinoa cozida",80,"M","","","",138,122,17,53,"A"],
+["Biscoito salgado industrializado",30,"L","Na,Ad","","",54,44,17,38,"T"],
+["Farofa pronta",30,"L","Na","","n",null,null,20,60,"E","M"],
+["Granola",30,"L","","Frutas secas e castanhas concentram potássio, fósforo e açúcar.","",null,null,19,55,"E"],
+["Pão de queijo",40,"L","Na","","",37,38,14,75,"E"],
+["Cereal matinal de farelo",30,"E","","O farelo concentra potássio e fósforo.","p",null,null],
+["Inhame (taro) cozido",70,"E","","Só volta a Limitar com a técnica de fervura em muita água e potássio controlado.","p","339–398","46–53",19,53,"A"],
+["Macarrão instantâneo","—","E","Na,Ad","Sódio e aditivos no tempero em pó.","",null,null],
+["Batata frita","60 g","E","","Potássio alto e gordura.","n",null,null,20,63,"A","L"]
+]);
+
+add("Leite e derivados","O fósforo dos lácteos deve ser considerado junto ao fósforo sérico, cálcio, PTH e aditivos; não há limite universal de duas porções. Preferir versões sem açúcar adicionado.",[
+["Cottage com pouco sódio",40,"M","Na","","",42,60],
+["Iogurte grego natural",100,"M","","","",141,135,4,35,"E"],
+["Iogurte natural sem açúcar",120,"M","","","",85,143,6,41,"A"],
+["Kefir",120,"M","","","",197,126,5,35,"E"],
+["Leite desnatado",150,"M","","","","200–210","123–128",7,37,"A"],
+["Leite integral",150,"M","","","","200–210","123–128",7,39,"A"],
+["Queijo minas frescal",40,"M","Na","","",42,49],
+["Ricota sem excesso de sal",40,"M","Na","","",45,65],
+["Bebida de amêndoa sem açúcar","150 mL","M","Ad","Ler o rótulo: evitar as que têm fosfato de potássio ou de cálcio.","",100,null,2,25,"E"],
+["Bebida de arroz","150 mL","M","Ad","IG alto. Preferir a de amêndoa ou a de soja sem açúcar.","n",null,null,14,86,"A","M"],
+["Bebida de soja sem açúcar","150 mL","M","Ad","Ler o rótulo: evitar as que têm fosfato de potássio ou de cálcio.","",182,null,3,34,"A"],
+["Muçarela",30,"L","Na","","",19,141],
+["Parmesão",15,"L","Na","","",14,112],
+["Queijo coalho",30,"L","Na","","",null,null],
+["Queijo processado","—","E","Na,Ad","O fosfato adicionado é absorvido quase por completo.","",194,578],
+["Requeijão cremoso",20,"E","Na,Ad","Sais fundentes fosfatados.","",19,90]
+]);
+
+add("Gorduras e óleos","Sem carboidrato. Com triglicerídeos de 182 e HDL de 33, preferir as gorduras insaturadas. O Mounjaro retarda o esvaziamento do estômago: refeições muito gordurosas e frituras costumam piorar náusea e refluxo.",[
+["Azeite de oliva extra virgem","13 g","P","","1 colher de sopa.","",0,0],
+["Óleo de canola","13 g","P","","","",0,0],
+["Azeite de dendê","5 g","M","","1 colher de chá. Rico em gordura saturada.","",0,0],
+["Leite de coco","50 mL","M","","","",72,13],
+["Manteiga sem sal","10 g","M","","","",1,null],
+["Margarina","10 g","L","Na,Ad","","",null,null],
+["Óleo de coco","10 g","L","","Gordura saturada.","",0,0]
+]);
+
+add("Temperos e condimentos","",[
+["Alho","5 g","P","","","",null,null],
+["Cúrcuma","2 g","P","","","",null,null],
+["Ervas frescas (salsa, coentro, cebolinha, manjericão, hortelã)","10 g","P","","Substituem o sal no preparo.","",null,null],
+["Ervas secas (orégano, alecrim, tomilho)","2 g","P","","","",null,null],
+["Gengibre","5 g","P","","","",null,null],
+["Limão (suco)","15 mL","P","","","",null,null],
+["Vinagre","15 mL","P","","","",null,null],
+["Ketchup e mostarda","15 g","L","Na","O ketchup tem açúcar adicionado.","",null,null],
+["Sal de cozinha","até 5 g/dia","L","Na","KDIGO 2024: menos de 2 g de sódio por dia, somando todo o sal dos alimentos.","",0,0],
+["Shoyu e molho inglês","5 mL","L","Na","Cerca de 250 mg de sódio por colher de chá.","",8,null],
+["Caldo em tablete e temperos prontos","—","E","Na,Ad","Um tablete tem mais sódio que o limite do dia. As versões light podem ter cloreto de potássio.","p",null,null],
+["Sal light e substitutos de sal","—","E","","Cerca de 20.000 mg de potássio por 100 g (TACO), com absorção quase total. Vale para salgante.","",null,null]
+]);
+
+add("Bebidas","",[
+["Água","200 mL","P","","Seguir a meta de líquidos da equipe de saúde.","",null,null],
+["Chá de ervas (camomila, erva-doce, hortelã)","200 mL","P","","Sem açúcar.","","10–26",null],
+["Chá verde ou preto","200 mL","P","Ox","Sem açúcar. Preto concentrado tem mais oxalato.","","10–26",null],
+["Café coado","100 mL","M","","Sem açúcar. No máximo 2 xícaras pequenas por dia.","",156,null],
+["Suco de maçã, pera ou abacaxi, coado","150 mL","M","","Sem fibra, a glicose chega ao sangue mais rápido. Não substitui a fruta.","",null,null,17,45,"A","L"],
+["Bebidas alcoólicas","—","L","Pu","Cerveja tem purinas elevadas. O álcool com jejum pode causar hipoglicemia, mesmo com risco baixo do Mounjaro isolado.","",null,null],
+["Isotônico","200 mL","L","Na","Contém açúcar.","",null,null,12,78,"E","L"],
+["Água de coco","200 mL","E","","","p",324,null,9,55,"E"],
+["Suco de laranja natural","200 mL","E","","","p",298,null,18,50,"A"],
+["Refrigerante tipo cola","—","E","Ad","Contém ácido fosfórico e açúcar.","",null,null],
+["Energético","—","E","Na","","",null,null]
+]);
+
+add("Açúcares, doces e adoçantes","Grupo acrescentado nesta revisão. Açúcar livre, doces e bebidas açucaradas ficam em Evitar pelo critério glicêmico, mesmo quando o critério renal os permitiria.",[
+["Açúcar branco","5 g","P","","1 colher de chá. Açúcar livre.","n",0,0,5,65,"A","E"],
+["Açúcar mascavo, rapadura e melado","10 g","M","","Açúcar livre, com mais potássio que o branco.","n",null,null,9,65,"E","E"],
+["Mel","10 g","P","","Açúcar livre. Não é substituto do açúcar para quem tem diabetes.","n",2,1,8,61,"A","E"],
+["Geleia e goiabada","20 g","M","","","n",null,null,13,60,"E","E"],
+["Bolo simples","60 g","M","Ad","O fermento químico contém fosfato.","n",null,null,32,60,"E","E"],
+["Achocolatado em pó","20 g","M","Ad","","n",null,null,16,70,"E","E"],
+["Doces e sobremesas (pudim, cocada, doce de leite)","—","M","","","n",null,null,null,null,"","E"],
+["Canjica e mungunzá","100 g","M","","Açúcar, leite e coco.","n",null,null,30,60,"E","E"],
+["Tapioca com recheio doce (coco, leite condensado, banana)","—","M","","","n",null,null,null,null,"","E"],
+["Suco de caixinha e néctar","200 mL","L","","Açúcar adicionado.","n",null,null,24,60,"E","E"],
+["Refrigerante comum (guaraná, limão)","—","M","","","n",null,null,null,null,"","E"],
+["Refrigerante zero tipo cola","—","L","Ad","Ácido fosfórico, mesmo sem açúcar.","n",null,null],
+["Sorvete","60 g","M","","Fósforo do leite, açúcar e gordura saturada.","n",null,null,12,51,"A","L"],
+["Chocolate ao leite","20 g","M","","","n",null,null,11,40,"A","L"],
+["Chocolate amargo 70%","10 g","M","","1 quadrado.","n",71,45,3,25,"E"],
+["Biscoito doce tipo maisena","30 g","M","","","n",null,null,18,50,"T","L"],
+["Biscoito de polvilho","20 g","M","Na","","n",null,null,16,80,"E","M"],
+["Pamonha","100 g","P","","","n",null,null,25,60,"E","M"],
+["Estévia (glicosídeos de esteviol)","1 sachê","P","","Sem carboidrato. Preferir a versão pura, sem açúcar misturado.","n",null,null],
+["Sucralose","1 sachê","M","","Sem carboidrato. Evidência de longo prazo limitada.","n",null,null],
+["Aspartame","1 sachê","M","","Sem carboidrato. Não usar em fenilcetonúria.","n",null,null],
+["Eritritol","1 colher de chá","M","","Poliol com evidência de segurança limitada na doença renal.","n",null,null],
+["Xilitol","1 colher de chá","L","","Poliol. Pode causar diarreia, e a evidência de segurança é limitada.","n",null,null],
+["Sorbitol e maltitol","—","L","","Polióis. Causam diarreia e elevam um pouco a glicemia.","n",null,null],
+["Acessulfame de potássio","1 sachê","M","","O nome químico contém potássio, mas a dose por sachê é pequena; avaliar formulação e quantidade real, sem proibição automática.","n",null,null],
+["Ciclamato e sacarina","—","L","Na","Versões sódicas.","n",null,null]
+]);
+
+add("Pratos baianos","Valores para a porção de prato indicada, sem acompanhamentos.",[
+["Moqueca de peixe","150 g","M","","Conta como a porção proteica. Pouco caldo. Valor de potássio estimado.","","350–450",null],
+["Acarajé (só o bolinho)","100 g","L","Na","Ocasional. Com vatapá e camarão, o total sobe.","",354,142,25,55,"E","M"],
+["Camarão à baiana","150 g","L","Pu,Na","","",209,366],
+["Caruru","—","L","Na","Feito com camarão seco salgado.","",null,null],
+["Vatapá","60 g","L","Na","","",125,65],
+["Feijoada","150 g","E","Na","","",455,158]
+]);
+
+// Auditoria V: registro a registro, sem alegar verificação externa individual.
+D.forEach(function(x){
+  x.audit=[];
+  if(x.k===null)x.audit.push("K não informado");
+  else if(typeof x.k!=="number")x.audit.push("K em intervalo: conferir referência e preparo");
+  if(x.f===null)x.audit.push("P não informado");
+  else if(typeof x.f!=="number")x.audit.push("P em intervalo: conferir referência e preparo");
+  if(x.cb!==null&&x.ig===null)x.audit.push("IG ausente; CG indeterminada");
+  if(x.src==="E")x.audit.push("IG estimado, não medido");
+  if(x.g==="Pratos baianos")x.audit.push("Receita e rendimento não padronizados");
+  x.audit.push("Composição nutricional: conferência individual pendente (TBCA/TACO/USDA)");
+  // Ausência de medida glicêmica não é evidência de preferência.
+  if(x.cb!==null&&x.ig===null&&x.gc==="P")x.gc="M";
+  x.fin=RANK[x.gc]>RANK[x.c]?x.gc:x.c;
+});
+function maxnum(v){if(typeof v==="number")return v;if(!v)return null;var m=String(v).match(/\d+/g);return m?Math.max.apply(null,m.map(Number)):null;}
+function lvl(k){return k<=150?"P":(k<=250?"M":"L");}
+function cgl(c){return c<=10?"P":(c<=19?"M":"L");}
+function slug(s){return "g-"+s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-");}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
+function por(x){return typeof x.p==="number"?x.p+" g":x.p;}
+function val(v){return v===null?"—":(typeof v==="number"?v.toLocaleString("pt-BR"):v);}
+
+var state={c:null,q:"",only:false};
+
+function row(x){
+  var c=CL[x.fin];
+  var flags=x.s.split("").map(function(f){return '<span class="flag">'+FLAGS[f]+'</span>';}).join("");
+  var kn=maxnum(x.k);
+  var kcell=x.k===null?'<span class="kv none">—</span>':'<span class="kv">'+val(x.k)+'</span><span class="kb"><i class="lv-'+lvl(kn)+'" style="width:'+Math.min(100,Math.round(kn/5))+'%"></i></span>';
+  var pcell='<span class="kv'+(x.f===null?' none':'')+'">'+val(x.f)+'</span>';
+  var gcell;
+  if(x.cg!==null){gcell='<span class="cgv c-'+cgl(x.cg)+'">CG '+x.cg+'</span><span class="igl">IG '+x.ig+'<sup title="'+SRC[x.src]+'">'+x.src+'</sup> · '+x.cb+' g</span>';}
+  else if(x.cb!==null){gcell='<span class="igl">'+x.cb+' g</span>';}
+  else{gcell='<span class="kv none">—</span>';}
+  var tg=x.t.map(function(k){return '<span class="tag" title="'+TG[k]+'">'+k+'</span>';}).join("");
+  var obs=esc(x.o)+'<details class="audit-inline"><summary>Qualidade dos dados</summary><span>'+x.audit.map(esc).join(" · ")+'</span></details>';
+  var why=x.fin!==x.c?'<span class="was"> renal: '+CL[x.c].n+' · glicêmico: '+CL[x.gc].n+'</span>':"";
+  var m=esc(por(x))+' <span>·</span> K '+(x.k===null?"—":val(x.k))+' <span>·</span> P '+(x.f===null?"—":val(x.f))+(x.cg!==null?' <span>·</span> CG '+x.cg:(x.cb!==null?' <span>·</span> '+x.cb+' g':''));
+  return '<tr><td class="name">'+esc(x.n)+flags+'</td><td class="por">'+esc(por(x))+'</td><td class="k">'+kcell+'</td><td class="p">'+pcell+'</td><td class="gl">'+gcell+'</td><td class="cls"><span class="pill '+c.k+'"><span aria-hidden="true">'+c.s+'</span>'+c.n+'</span></td><td class="obs">'+obs+why+(tg&&(obs||why)?" ":"")+tg+'</td><td class="m">'+m+'</td></tr>';
+}
+
+function render(){
+  var q=norm(state.q.trim());
+  var html="",shown=0;
+  GROUPS.forEach(function(g){
+    var items=D.filter(function(x){
+      if(x.g!==g)return false;
+      if(state.c&&x.fin!==state.c)return false;
+      if(state.only&&x.s.replace("p","")==="")return false;
+      if(q&&norm(x.n+" "+x.o).indexOf(q)<0)return false;
+      return true;
+    });
+    if(!items.length)return;
+    shown+=items.length;
+    var body="";
+    ORDER.forEach(function(k){
+      var sub=items.filter(function(x){return x.fin===k;}).sort(function(a,b){return a.n.localeCompare(b.n,"pt");});
+      if(!sub.length)return;
+      var c=CL[k];
+      body+='<tr class="sub"><td colspan="7"><span class="pill '+c.k+'"><span aria-hidden="true">'+c.s+'</span>'+c.n+'</span><span class="n">'+sub.length+(sub.length===1?' item':' itens')+'</span></td></tr>'+sub.map(row).join("");
+    });
+    html+='<section id="'+slug(g)+'"><h2>'+g+'<small>'+items.length+' itens</small></h2>'+(GN[g]?'<p class="gnote">'+esc(GN[g])+'</p>':'')+'<div class="tw"><table><thead><tr><th>Alimento</th><th>Porção</th><th>Potássio (mg)</th><th>Fósforo (mg)</th><th>Carga glicêmica</th><th>Nível final</th><th>Observação</th></tr></thead><tbody>'+body+'</tbody></table></div></section>';
+  });
+  document.getElementById("out").innerHTML=shown?html:'<p class="empty">Nenhum alimento encontrado com esses filtros.</p>';
+}
+
+function chips(){
+  var n={};ORDER.forEach(function(k){n[k]=D.filter(function(x){return x.fin===k;}).length;});
+  var rev=D.filter(function(x){return x.s.replace("p","")!=="";}).length;
+  var h='<button class="chip" data-c="" aria-pressed="'+(!state.c&&!state.only)+'">Todos <b>'+D.length+'</b></button>';
+  ORDER.forEach(function(k){h+='<button class="chip" data-c="'+k+'" aria-pressed="'+(state.c===k)+'">'+CL[k].s+" "+CL[k].n+' <b>'+n[k]+'</b></button>';});
+  h+='<button class="chip" data-only="1" aria-pressed="'+state.only+'">Novos e revisados <b>'+rev+'</b></button>';
+  document.getElementById("chips").innerHTML=h;
+}
+
+document.getElementById("chips").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.hasAttribute("data-only")){state.only=!state.only;}
+  else if(b.getAttribute("data-c")===""){state.c=null;state.only=false;}
+  else{var k=b.getAttribute("data-c");state.c=(state.c===k)?null:k;}
+  chips();render();
+});
+document.getElementById("q").addEventListener("input",function(e){state.q=e.target.value;render();});
+
+document.getElementById("jump").innerHTML=GROUPS.map(function(g){return '<li><a href="#'+slug(g)+'">'+g+'</a></li>';}).join("");
+document.getElementById("legend").innerHTML=Object.keys(TG).map(function(k){return '<li><span class="tag">'+k+'</span>'+TG[k]+'</li>';}).join("")+Object.keys(SRC).map(function(k){return '<li><span class="tag">'+k+'</span>'+SRC[k]+'</li>';}).join("");
+
+var up=D.filter(function(x){return x.s.indexOf("g")>=0&&x.s.indexOf("n")<0;});
+var upNew=D.filter(function(x){return x.s.indexOf("g")>=0&&x.g==="Açúcares, doces e adoçantes";}).length;
+var nov=D.filter(function(x){return x.s.indexOf("n")>=0;}).length;
+document.getElementById("chg-intro").textContent="O critério glicêmico foi somado ao renal, e o nível final é o mais restritivo. "+up.length+" alimentos já existentes subiram de risco. Foram acrescentados "+nov+" itens, a maioria de açúcares, doces e adoçantes, mais alimentos-base como polenta, pães e farofa, a bebida de arroz e a batata frita. Os valores de carboidrato, IG e CG permanecem identificados quando disponíveis; lacunas e estimativas são sinalizadas. As classificações não mudam automaticamente com um único IG ou exame laboratorial.";
+document.getElementById("chg-up").innerHTML=up.map(function(x){return '<li><strong style="font-weight:500">'+esc(x.n)+'</strong>: '+CL[x.c].n+' → '+CL[x.fin].n+' <span class="was">'+(x.cg!==null?'CG '+x.cg+', IG '+x.ig+x.src:'')+'</span></li>';}).join("");
+
+chips();render();
+</script>
+
+</body>
+</html>
